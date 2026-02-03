@@ -37,7 +37,7 @@ median (grouped data) = $L_m + (\frac{ \frac{n}{2} - cf_{m-1} }{ f_m })w_m$
 - n = number of values
 - $L_m$ = Lower bound of class containing median
 - $f_m$ = frequency of class containing median
-- $cf_{m-1}$ = cumilative freq of class before median class
+- $cf_{m-1}$ = cumilative freq of ALL class before median class
 - $w_m$ = width of class containing median (e.g. category range is 20-60, so $w_m$ is 40 )
 
 Population variance $\sigma^2$ = $\frac{\displaystyle\sum{} (x_i - \mu)^2}{N}$  
@@ -314,6 +314,61 @@ also called risk
 
 # Chap 2: Probability theory
 
+## Formula
+
+Classical
+ P(A) = $\frac{f}{N}$
+- f = num outcomes of A
+- N = total outcomes
+
+Relative freq
+P(A) = $\frac{f}{N}$
+- f = number of times the outcome occurs
+- N = total number of observations
+
+Venn Diagram
+0 < P(A) < 1
+P(S) = 1
+- S = sample space
+
+Event A OR B
+- P(A∪B) = P(A) + P(B) - P(A∩B)
+Event A AND B
+- P(A∩B) = P(A) * P(B)
+
+Mutually Exclusive;
+- P(A∩B) = 0
+- P(A∪B) = P(A) + P(B)
+
+Conditional Probability:
+- P(A|B) = $\frac{P(A∩B)}{P(B)}$
+- P(B|A) = $\frac{P(A∩B)}{P(A)}$
+- P(A|B) $\neq$ P(B|A)
+- P(A|B) $\neq$ P(A∩B)
+
+Multiplicative Rules:
+- From P(A|B) = $\frac{P(A∩B)}{P(B)}$; we have P(A∩B) = P(A|B)P(B)
+
+Independent vs Mutually Exclusive
+- Tree diagram helpful when time / order is involved
+
+| When event are:    | P(A∪B) / P(A or B) =     | P(A∩B) / P(A and B) = | P(A\|B) =                   |
+| ------------------ | ------------------------ | --------------------- | --------------------------- |
+| Mutually Exclusive | P(A) + P(B)              | 0                     | 0                           |
+| Independent        | P(A) + P(B) - P(A)P(B)   | P(A)P(B)              | P(A)                        |
+| Any                | P(A) + P(B) - P(A and B) | P(A)P(B\|A)           | $\frac{P(A\ and\ B)}{P(B)}$ |
+
+Exhaustive events:
+- P(A∪B) = P(S) = 1
+
+Law of total Probability
+- Given a set of ***mutually exclusive and exhaustive events ($S_1...S_k$)**,*
+- P(A) = P(A∩$S_1$) + P(A∩$S_2$) + ... + P(A∩$S_k$)
+-  P(A) = P(A|$S_1$)P($S_1$) + P(A|$S_2$)P($S_2$) + ... + P(A|$S_k$)P($S_k$)
+	- rewrite with multiplicative rule
+
+Bayes theorem
+- P(B|A) = $\frac{P(A|B)P(B)}{P(A|B)P(B) + P(A|B^`)P(B^`)}$
 ## How to interpret probability
 
 Mathematical definition:
@@ -373,7 +428,7 @@ Event B = P(B)
 Event A OR B  P(A∪B) = P(A) + P(B) - P(A∩B)
 Minus for double count
 
-Event A AND B = P(A∩B)
+Event A AND B = P(A∩B) = P(A) * P(B)
 
 
 Mutually Exclusive;
@@ -466,6 +521,285 @@ Bayes theorem useful when data given only has 1 specific event first as well as 
 
 # Chap 3
 
+### Formula
+
+discrete (P(X = x))
+continuous P($x_1\leq X\leq x_2$)
+
+mean of discrete data variable = $\frac{ \displaystyle\sum_{} x_if_i } {n} = x_i \frac{ \displaystyle\sum_{} f_i } {n}$
+
+mean of discrete random variable / Expected Value E(X) = $\mu$ = $\displaystyle\sum{}xP(X=x)$
+
+Variance of discrete random variable:
+Var(X) = $\sigma^2 = \displaystyle\sum{} (x - \mu)^2P(X=x)$
+Std dev:
+$\sigma = \sqrt{\sigma^2}$
+
+Representation of binomial random variable X
+X ~ B(n,p)
+- n = number of trails
+- p = probability of success 
+
+Probability of specific outcome
+P(X=x) = $\binom{n}{x}p^x(1-p)^{n-x}$
+- x = num of successes
+- $\binom{n}{x}$ = total num combinations
+	- n = total num of trials outcomes (e.g. total students)
+	- x = num successes (num students you want to pass / fail)
+		- e.g. if goal is to fail all, x = total num students
+	- $\binom{n}{x} = \frac{n!}{(n-x!)x!}$
+- p = probability of success outcome
+
+Binomial Mean
+$E(X) = np$
+
+Binomial Variance
+$VAR(X) = np(1-p)$
+
+### Variables
+Normal variable
+- represent quantity
+- no assumptions about value
+
 Random variable:
 - Denoted with capitol letter
 - Possible values are numerical outcomes of a random phenomenon
+- value follows probability distribution
+- subject to some randomness / chance
+- can be discrete (P(X = x))
+	- must be one of countable list of distinct values
+	- can find probabilities for exact outcomes
+	- should be make sense
+		- whole values for things like birth year, number of babies bron this year
+- continuous P($x_1\leq X\leq x_2$)
+	- can take any value in an interval / collection of intervals
+	- limited to finding probability for intervals of values
+
+### Probability Distribution
+
+if probability has discrete outcomes, use barchart / graph / formula
+if probability is continuous values, use distribution
+
+### Probability distribution vs frequency distribution
+
+|                                  | Frequency                                                                                                                            | Probability                                                           |
+| -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------- |
+| sum of all values                | 1                                                                                                                                    | 1                                                                     |
+| probability / relative frequency | $0\leq\frac{f_i}{n}\leq1$                                                                                                            | $0\leq P(X=x)\leq1$                                                   |
+| source                           | empirical data                                                                                                                       | expected probability                                                  |
+| mean                             | mean of discrete data variable<br>$\frac{ \displaystyle\sum_{} x_if_i } {n} = x_i \frac{ \displaystyle\sum_{} f_i } {n}$<br><br><br> | mean or expected value<br>E(X) = $\mu$ = $\displaystyle\sum{}xP(X=x)$ |
+
+### Law of large numbers
+
+Expected value of practical importance sine as number of trials increase, mean will converge on expected value
+
+expected value is mean of infinite trials, idealized
+mean is from empirical data
+
+### Variance and Standard Deviation of Discrete random variables
+
+Var(X) = $\sigma^2 = \displaystyle\sum{} (x - \mu)^2P(X=x)$
+
+$\sigma = \sqrt{\sigma^2}$
+
+### Binomial Random Variable
+Special Class of Random variable
+
+must exhibit
+- 1 of 2 discrete outcomes categorized as success//failure / binary outcome
+- probability of success/failure is fixed over all trials
+- fixed and finite number of independent and identical trials
+
+### Binomial Distribution
+
+Probability of binomial random variable X
+- X ~ B(n,p)
+	- n = number of trails
+	- p = probability of success 
+Formula
+P(X=x) = $\binom{n}{x}p^x(1-p)^{n-x}$
+- x = num of successes
+- $\binom{n}{x}$ = total num combinations
+	- n = total num of trials outcomes
+	- x = num successes
+- p = probability of success outcome
+
+$\binom{n}{x} = \frac{n!}{(n-x!)x!}$
+
+
+Mean
+$E(X) = np$
+
+Variance
+$VAR(X) = np(1-p)$
+
+# Chap 4
+
+## Formula
+
+P($L_b \leq x \leq U_b) = \frac{U_b-L_b}{U_l}$
+- $L_b$ - lower bound
+- $U_b$ - Upper bound
+- $U_l$ - Upper Limit of Continuous space
+
+|                    | Continuous random variable                                                          |
+| ------------------ | ----------------------------------------------------------------------------------- |
+| mean               | E(X) = <br>$\mu =$<br>$\int_{-∞}^∞ f(x)dx$                                          |
+| Variance           | Var(X) = <br>$\sigma^2 =$<br>$\int_{-∞}^∞ (x-\mu)^2 \int (x)dx$                     |
+| Alternate Variance | Var(X) = <br>$\sigma^2 =$<br>$E(X^2)-\mu^2$<br>Where $E(X^2) = \int_{-∞}^∞ x^2f(x)$ |
+
+Z = $\frac{x-\mu}{\sigma}$
+$\mu = np$
+$\sigma^2 = np(1-p)$
+
+approximation
+X~B(n,p) -> Y~N(np,np(1-p))
+
+## Continuous spaces
+For all intervals of \[a,b] (when all possibilities are equally likely):
+- $\frac{|b-a|}{U_l}$
+- $a$ - lower bound
+- $b$ - Upper bound
+- $U_l$ - Upper Limit of Continuous space
+
+When drawing a graph for continuous spaces
+- x axis - interval like angle (0-360)
+- y-axis / F(x) - 1/upper limit of whole interval
+- area under the graph aka density - probability of continuous random variable
+
+e.g.
+Angles between 2 lines in a circle
+Angle is continuous value, can have as many decimal places as you want
+but if you ask for P($0 \leq x \leq 180$), then probability can be found
+
+## Density
+
+F(x) is the density function of the space
+in a circle, F(x) = $\frac{1}{360}$
+
+For any interval where ($a \leq x \leq b$) the probability is the area under the curve
+
+Probability = (b-a) \* height
+
+e.g.
+(b-a) \* height = (b-a) \*  $\frac{1}{360}$ =  $\frac{(b-a)}{360}$
+
+## Probability Density Function
+Describes continuous random variables
+
+Definition::
+the probability density function of a continuous random variable $X$ is a function $f(x)$ such that the area under the curve over an interval equals the probability of $X$ in that interval.
+
+$f(x) \geq 0$:
+$P(c \leq x \leq d) = \int_c^d f(x)dx$
+
+Since infinitely many values / outcomes, probability of a particular outcome to occur is negligible
+$P(X=x) = \int_c^d f(x)dx = 0$
+
+So can only find probability for intervals
+$P(a < X < b) = P(a \leq X < b) = P(a < X \leq b) = P(a \leq X \leq b) = \int_a^b f(x)dx$
+less than or less than equals doesnt matter as including that specific value does not matter due to nature of continuous space
+
+Requirements of density functions:
+- $f(x) \geq 0$
+- area under the curve = $\int_{-∞}^∞ f(x) = 1$
+
+## Types of Distribution
+
+### Uniform Distribution
+
+Contiguous Uniform Distribution / Rectangle distribution
+has symmetric probability distributions
+all intervals of the same length on the x-axis are equally probable
+
+### Normal Distribution
+Normal Random Variable / Normal distribution
+very useful to model random phenomenon in real world
+
+Definition:
+normal distribution X, written as X ~ N($\mu, \sigma^2$), is a continuous random variable having the classic bell-shaped probability density function
+
+$f(x) \geq 0$:
+$P(c \leq x \leq d) = \int_c^d f(x)dx$
+True function: $f(x) = (\frac{1}{\sigma \sqrt{2\pi}^e})^{-0.5(\frac{x-\mu}{\sigma})^2}$;  for -∞ < x < ∞
+standard normal: $f(x) = (\frac{1}{\sqrt{2\pi}^e})^{-0.5(x)^2}$;  for -∞ < x < ∞
+
+![[normal_dist_to_std_dist.png]]
+
+## Z-table
+
+still difficult to calculate in standard normal
+can rely on Z-table for pre-computed probability
+has probability P($Z \leq z$)
+
+1.36 = 1.3 then .06
+
+1.345 = 1.3 diff between .04 and .05
+
+what about P(Z > 1.11)?
+Complement P($Z \leq z$)
+
+Since symmetric about the mean
+![[symmetric_about_mean.png]]
+P($Z \geq z$) = 1 - P($Z < z$)
+P($Z \geq -z$) = P($Z \leq z$)
+P($Z \leq -z$) = 1 - P($Z \leq z$)
+P($-z \leq Z \leq z$) = P($Z \leq z$) - P($Z \leq -z$)
+
+Can also find Z given probability
+P(Z < z) = 0.95
+means z = 1.645
+
+
+# Chap 5
+
+## Approximate Binomial Distribtion
+
+Given X ~ B(n,p) with n so large such that np >5 and n(1-p) > 5
+can use X ~ N($\mu, \sigma^2$) where $\mu$ = np, $\sigma^2$ = np(1-p)
+
+| Inequality type | Correction             |
+| --------------- | ---------------------- |
+| P(X = a)        | P($a-0.5 < X < a+0.5$) |
+| P(X > a)        | P(X > a + 0.5)         |
+| P(X $\leq$ a)   | P(X < a + 0.5)         |
+| P(X < a)        | P(X < a - 0.5)         |
+| P(X $\geq$ a)   | P(X > a - 0.5)         |
+Continuity Correction
+
+## Combining Random Variables
+
+Add mean is add means of both
+diff mean is subtract both
+E(X+Y) = E(X) + E(Y)
+E(X-Y) = E(X) - E(Y)
+
+Add variance is add variance of both
+diff variance is still add both lol
+Var(X+Y) = Var(X) + Var(Y)
+Var(X-Y) = Var(X) + Var(Y)
+
+
+Given discrete / continuous random variables X, Y as well as constants a, b
+$E(aX \pm b) = aE(X) \pm b$
+$Var(aX \pm b) = a^2Var(X)$
+
+the following are true if X and Y are independent
+$E(aX \pm bY) = aE(X) \pm bE(Y)$
+$Var(aX \pm bY) = a^2Var(X) \pm b^2Var(Y)$
+
+if X and Y are normal distribution, $aX \pm bY$ is also normal
+if X and Y are binomial distribution, $aX \pm bY$ is also binomial, only if they have the same success probability p
+
+## Statistical Studies
+Inferential Statistics is to obtain sample statistics to make inferences about population parameters in order to answer our questions.
+calculate $\bar{x}$, infer $\mu$
+
+steps:
+1. Curiosity about something
+2. Questions about a parameter (variable)
+	- What are statistical qns
+	- a qn that you can collect data with variability
+		- Variability: the degree to which data points vary
+1. Collect data appropriate for that parameter
+2. Make inferences about that value of the parameter

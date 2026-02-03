@@ -106,18 +106,15 @@ Web is just 1 protocol that uses the internet
 	
 ## Web Apps VS Desktop Apps
 
-- Advantages of Web Apps
-	- can be accessed from any internet-enabled computer
-	- different OS / browser ok
-	- easier to roll out program updates since software serverside rather than client side
-	- Centralised storage, fewer security problem
-- Disadvantage
-	- Need active internet connections
-	- Security concern about sensitive data trasmitted over internet
-	- Concern on storage / use / Licensing of uploaded data
-	- websites do not have identical appearance across all browsers
-	- Restrictions on software from being installed and hardware being accessed
-	- additional plugins may interfere with javascript, cookies or advertisments
+| Advantage                                                                            | Disadvantage                                                               |
+| ------------------------------------------------------------------------------------ | -------------------------------------------------------------------------- |
+| can be accessed from any internet-enabled computer                                   | Need active internet connections                                           |
+| different OS / browser ok                                                            | Security concern about sensitive data transmitted over internet            |
+| easier to roll out program updates since software serverside rather than client side | Concern on storage / use / Licensing of uploaded data                      |
+| Centralised storage, fewer security problem                                          | websites do not have identical appearance across all browsers              |
+|                                                                                      | Restrictions on software from being installed and hardware being accessed  |
+|                                                                                      | additional plugins may interfere with javascript, cookies or advertisments |
+
 ## HTML 5
 
 Why use proper semantic elements?
@@ -133,20 +130,10 @@ Language made to standardize document styles and data format to allow adoption o
 
 ## Goal of HTML
 
-1. Improve Native Web
-	- HTML 5 added syntactic features to web that previously needed plugins to work
-		- e.g. \<audio>, \<video> and \<canvas> elements
-	- Enables richer desktop-like experience
-2. Do more with less code
-	- simplify common design patterns (and more) by creating standardized ways to do in HTML alone no plugin
-		- e.g.
-		- placeholder text in forms
-		- autofocus on particular input element
-		- client-side validation
-		- date time pickers
-3. Realize Semantic Web
-	- Semantic Web refers to content that is readable and meaningful to both humans and machines
-
+| Improve Native Web                                                                                                                  | Do more with less code                                                                                                                                                                                                                                    | Realize Semantic Web                                                                       |
+| ----------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| HTML 5 added syntactic features to web that previously needed plugins to work<br><br>e.g. \<audio>, \<video> and \<canvas> elements | simplify common design patterns (and more) by creating standardized ways to do in HTML alone no plugin<br><br>- e.g.<br>		- placeholder text in forms<br>		- autofocus on particular input element<br>		- client-side validation<br>		- date time pickers | Semantic Web refers to content that is readable and meaningful to both humans and machines |
+| Enables richer desktop-like experience                                                                                              |                                                                                                                                                                                                                                                           |                                                                                            |
 
 To make it easier to find and access documents on the internet
 
@@ -193,7 +180,7 @@ Also for styling
 Can still use for styling
 
 
-# Chap2 CSS & Bootstrap
+# Chap 2 CSS & Bootstrap
 
 Responsiveness != Responsive Design
 
@@ -215,7 +202,7 @@ Always consists of the below 3 things
 - Class selector will attempt to apply the given property to any tags with the given class
 	- e.g.
 	- \<p> and \<h1> can both have same class and therefore same color
-	- \<img> may have same class as \<p> \<h1> but maynot have the color property
+	- \<img> may have same class as \<p> \<h1> but may not have the color property
 - ID and Class allow application to multiple types of elements
 	- Class meant to apply to multiple elements (may be of varying types) regardless of position in document tree
 	- ID meant to apply to single element regardless of position in docuent tree
@@ -311,3 +298,167 @@ Generally avoid inline as have to scroll to specific element to edit
 - should be replicated on all pages
 
 ### Misc. Bootstrap Features
+
+
+# Chap 3 JavaScript
+
+## Intro to JS
+
+### History
+
+Servers used many languages
+- ASP
+- PHP
+- PERL
+all serverside, needed send post req to use
+
+Made demand for client side script, running on browser
+
+attempts:
+- java applets
+	- not good due to lack of control over access to machine
+- active X
+- plugins
+
+want somethin 
+- interpreted
+- fast
+
+Brenden Eich - worked at netscape later founded mozilla
+wrote the basics of javascript
+Sun Oracle, owner off Java name, suggested naming it Javascript, as it was a "we-hate-microsoft" together phase
+so its not really related to Java, more related from C
+
+IEEE has a specific name for Javascript as it is official but everyone calls is js lol
+
+wont talk much about XML or JSON in the course but can use in project if you want
+
+Java using var for all variables makes it prone to error if you dont handle the type of your variables well
+
+Does not cascade / overwrite like css when having same function / variable name
+
+Script tag does not have to be in header like style tag
+Can be put at bottom of body, ensures script is only loaded when whole page is loaded
+Location in code does matter since loading still loads from the top down
+
+Now can just use defer tag in the script tag, rather than having to place it 
+
+Or have a onload code in js to only add listeners when page fully loaded
+
+or async, which implies your JS is all functions that do not require any information from the page and can be loaded before page is fully loaded
+### Event Handling
+
+Inline js is not secure, pls dont use
+
+need to initialize listeners on load
+make init function and add listeners for different things like banner or each caption
+
+
+### Debugging
+
+Use breakpoints
+
+alt is like alt name for this specific tag, its like ID
+
+### Advantages & Disadvantages of Client-side scripting
+Advantages
+- processing offload to client, reduce load on server
+- browser responds rapidly to user events; improve user experience
+- JS interact with HTML in a way that server cannot
+
+Disadvantages:
+- Client can disable to code, or admins can turn off js with policy
+	- Means functionality req redundancy on server
+- JS heavy web apps are complicated; hard to maintain
+- Not fault tolerant
+	- Will cease execution on invalid line
+- Java script constantly being worked on, newer features may not be supported on all browsers
+
+## Document Object Model (DOM)
+
+Each tag is an element and becomes and object when the page is loaded
+
+open using F12 inspect, elements tab
+
+## JavaScript Libraries & frameworks
+
+- Bootstrap JS
+- jQuery
+- Ajax
+	- out of fashion, FetchAPI (2015) gaining popularity
+- JSON
+- Typescript
+
+
+## TypeScript
+
+
+# Chap 4 Web Accessibility and testing
+
+## W3C Web accessibility Initiative
+
+pre 2000
+IE and netscape fighting, didnt care for standardisation
+Developers  have to cook up funky javascript for netscape or for IE
+Webpages may not work the same on diff browsers
+
+
+- W3C overview
+	- Who governs web
+		- is the body set standands for browser maker and developers to follow
+		- if both follow standard, all browsers work with all pages
+- Web Standards
+- Validating Web Pages
+	- W3C Markup validation service
+	- made to promote / make easier for people to follow the standard
+	- can take public domain names
+	- can take source code
+
+## Web Content Accessibility
+- Four principles (POUR)
+	- Perceivable
+		- Provide Text alternative for non-text content
+		- Provide captions & other alternatives for multimedia
+		- Create content that can be presented in different ways including assistive technologies w/o losing meaning
+		- Make it easier to see and hear content (e.g. font size)
+	- Operable
+		- Make all functionality available from keyboard
+		- Give users enough time to read and use content
+		- Do not use content that can induce seizures or physical reactions
+		- Help users navigate and find content
+		- Make it easier to use inputs other than keyboard
+	- Understandable
+		- Make text readable / understandable
+		- Make content appear and operate in predictable ways
+		- Help users avoid and correct mistakes
+	- Robust
+
+
+## Accessibility Testing Tools
+- deque's axe browser plugin
+- used to test website for WCAG POUR
+
+# Chap 5 Serverside web dev PHP
+
+Some servers only return files  e.g, send html then .css then .js
+those do not process any logic, all done by browserr software
+
+Extensions that use php files require server to process logic as browser does not have ability to process raw php file
+so server processes logic and makes / fetches correct html andor css andor js
+
+advantage
+- secret / security 
+- cross platform compatibility (php chooses correct format to display)
+- access to server-side resources like database
+- works even if js disable by client, php always runs as is on server
+disadvantage
+- increased response time / latency may become an issue
+- server requiers more processing power
+- more work required serverside / more overhead serverside
+- little bbit arcer to debug
+
+75% of pages in world use php
+- wordpress and wooCommerce use php thats why
+
+php made from perl made from C so similar syntax, easier to learn
+php has many existing examples, easy to find examples or implementations

@@ -300,4 +300,142 @@ a func in child class has the same name as a func from parent class
 it also takes the exacct same arguments as the parent class's func
 calling this func from the child class will use the child class implementation, overridng the parent class implementation
 
+### Liskov Substitution Principle
+
+Inheritance should only be used when the child class can truly behave like the parent class w/o breaking exceptions
+
+is Square extends Rectangle, any code that works for rectangle should work for square
+
+### Recap Quiz
+
+Class B extends Class A
+inherits Public and protected methods
+Does not inherit private field
+
+Overloading does not support Dynamic Binding
+- Same method name, diff arguments (method signature)
+- Static / Compile Time polymorph
+Overriding supports Dynamic Binding
+- Depends on which object calls method
+- Same method Name and signature, diff class diff declaration
 ## Wk 4
+
+### UML yap
+
+if have general functions because havent make yet, its ok
+
+fking
+all the parent class or whatever is see mood
+there is literally no requirements
+you just take a shot in the dark
+"meaningful class connections" dawg this means nothing, never even teach us UML still expect us to do, retarded
+
+
+
+### Abstraction
+- Hiding complex, low-level details with a simpler, high-level layer  
+• The process of hiding certain details and showing only essential  
+information to the user.  
+
+E.g.
+Ordering from grab w/o about how the restaurant works
+Posting on instagram w/o knowing how the server stores the img
+
+
+Abstraction: Show necessary, hide complexity, focus on what object does w/o worrying about back end. 
+Encapsulation: Wrap the data, hide internal state, protect internal from misuse, focus on how object is built
+
+Abstract methods do not have a body, only the method name and arguments required
+Any classes that extend from an abstract class MUST have a definition for each abstract function declared in parent
+Objects cannot be instantiated from abstract classes
+### Interfaces
+is a way through which unrelated objects interact with one another
+is like a rulebook that says what functions a class must have - does not say how to write them
+i.e. define a set of method signatures that a class must adhere to
+
+e.g.
+all instagram influencers must : post stories, post photos, reply to DMs
+interface from instagram to influencers
+
+Multi inheritance is not possible but can have multiple interfaces
+
+interfaces are declared outside of any class, any class that requires the interface uses keyword implements
+
+interfaces are not classes
+interfaces cannot have objects instantiated from it
+interfaces do not tell you how to write the method
+
+interfaces can have default, static and private methods, as well as constant/final/static variables
+default and static methods may help explain what the interface is supposed to do
+e.g. static test(){}
+
+static method can be like check if obj is active then set val
+
+default methods can be overridden, static cannot
+
+Is like a layer 2 switch in the way that only those "plugged" into the switch by implementing the interface must define methods declared in the interface and can call those methods
+
+e.g. iMovable interface
+each class that implements iMovable must define each method in iMovable
+any class that implements iMovable can call the methods declared in the interface
+
+
+### Relationships
+| Relationship | Meaning                        |                                                                                                                                                                      |
+| ------------ | ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Inheritance  | Parent -> Child(is-a)          | "I got it from my mom"<br>Dog extends Animal means Dog is an animal<br>Student extends person means Student is a person                                              |
+| Association  | Connected but independent      | "We talk somtimes"                                                                                                                                                   |
+| Aggregation  | Has-a<br>parts are independent | "Group project but each lives own lives"<br>Library is collection of books yet  each book is unique                                                                  |
+| Composition  | Has-a<br>Parts are dependent   | "We die together"<br>If object A exists, object B will also exist<br>Book has pages, without pages, book does not exist, without book, pages of that book dont exist |
+| Dependency   | Temporary Use                  | "A quick situationship"<br>Student study in Library, both can exist without the other yet, in order to study, the student is dependent on the library                |
+
+#### E.g.
+class Engine{
+	private int horsePower;
+
+	public Engine(int horsepower){
+		this.horsePower = horsepower
+	}
+
+	public void start(){
+		System.out.println("Engine starting with " + horsepower + " HP")
+	}
+}
+
+class Van{
+	private Engine engine;
+	public Van(){
+		this.engine = new Engine(120);
+		// since allocating mem, strong ownership of Engine obj
+		// thus is a Composition
+		// does not need inheritance here, yet connected due to mem alloc
+		// engine must be part of van,, if van does not exist, mem is not alloced for engine to be made
+	}
+}
+
+
+## Wk 5
+
+### Assignement of Variables
+
+Value
+- for primitives like int, char
+Reference
+- pointers
+- for instanced objects
+
+
+### Cloning
+Is not inheritance
+is not creating obj with new keyword
+is not serialisation
+#### Shallow Clone
+
+Two pointers to same underlying object
+if either makes change, other can see
+
+#### Deep Clone
+
+2nd pointer points to ca new mem addr with copy of data from 1st pointer
+
+
