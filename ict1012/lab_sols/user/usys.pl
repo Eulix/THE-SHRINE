@@ -42,3 +42,4 @@ entry("getpid");
 entry("sbrk");
 entry("pause");
 entry("uptime");
+entry("hello"); # Lab 2 Task 1

@@ -105,3 +105,12 @@ sys_uptime(void)
   release(&tickslock);
   return xticks;
 }
+
+// Lab 2 Task 1
+uint64
+sys_hello(void)
+{
+    printf("Hello from kernel syscall!\n");
+    printf("I am ICT1012!\n");
+    return 42; // The answer to life, the universe and everything
+}

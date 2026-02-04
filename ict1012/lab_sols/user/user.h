@@ -24,6 +24,7 @@ int getpid(void);
 char* sys_sbrk(int,int);
 int pause(int);
 int uptime(void);
+int hello(void); // Lab 2 Task 1
 
 // ulib.c
 int stat(const char*, struct stat*);

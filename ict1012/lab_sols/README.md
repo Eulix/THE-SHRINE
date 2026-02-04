@@ -25,6 +25,67 @@ file: [lab1/sleep.c](lab1/sleep.c)
 
 file: [lab1/sleep.c](lab1/memdump.c)
 
+## Lab 2
+
+### Task 1: hello
+
+files:
+
+- [kernel/syscall.h](kernel/syscall.h) (added syscall number)
+- [kernel/syscall.c](kernel/syscall.c) (declare syscall handler and add it to syscall vtable)
+- [kernel/sysproc.c](kernel/sysproc.c) (implement syscall handler. This doesn't have to be done in sysproc.c, you'll notice there are many syscall handlers spread across different files in the kernel)
+- [kernel/defs.h](kernel/defs.h) (declare syscall handler prototype in common defs file so other kernel files can use it easily)
+- [user/usys.pl](user/usys.pl) (generate assembly code for user to call the syscall)
+- [user/user.h](user/user.h) (declare the user syscall prototype so we can use it in C code. This is linked to the assembly code generated in usys.pl)
+- [lab2/hello.c](lab2/hello.c) (simple program to call the syscall and print the return value)
+
+### Task 2: sixfive
+
+file: [lab2/sixfive.c](lab2/sixfive.c)
+
+### Task 3: xargs
+
+file: [lab2/xargs.c](lab2/xargs.c)
+
+I think many of us were confused by the description of this task, so I'll try to explain it here.
+
+Basically, xargs takes the arguments from the command line as a base, and appends additional arguments from standard input (aka stdin).
+The -n option specifies the maximum number of arguments to append from stdin per command.
+Once we have enough arguments, we execute the command and repeat until we reach the end of stdin.
+If -n is not given, we just append all arguments from stdin to the command and execute it once.
+
+Examples:
+
+```
+$ (echo arg1 arg2 arg3) | xargs echo base
+// Stdin:
+// arg1 arg2 arg3
+//
+// Executes:
+// echo base arg1 arg2 arg3
+```
+
+```
+$ (echo arg1 arg2 arg3) | xargs -n 2 echo base
+// Stdin:
+// arg1 arg2 arg3
+//
+// Executes:
+// echo base arg1 arg2
+// echo base arg3
+```
+
+```
+$ (echo arg1 ; echo arg2 arg3) | xargs -n 2 echo base
+// Stdin:
+// arg1
+// arg2 arg3
+//
+// Executes:
+// echo base arg1 arg2
+// echo base arg3
+```
+
 ## Contributing
 
 1. Create a new lab\* folder for your lab solutions

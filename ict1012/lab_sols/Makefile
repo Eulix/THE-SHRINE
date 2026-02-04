@@ -141,6 +141,9 @@ UPROGS=\
 	$U/_zombie\
 	lab1/_sleep\
 	lab1/_memdump\
+	lab2/_hello\
+	lab2/_sixfive\
+	lab2/_xargs\
 
 fs.img: mkfs/mkfs README.md $(UPROGS)
 	mkfs/mkfs fs.img README.md $(UPROGS)
